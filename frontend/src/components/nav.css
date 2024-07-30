@@ -1,0 +1,5 @@
+.modal-backdrop.show {
+  opacity: 0.70 !important; /* Increase the opacity value to make the backdrop darker */
+}
+
+  
