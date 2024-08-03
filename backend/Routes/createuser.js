@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require('../models/User');
 const { body, validationResult } = require('express-validator');
 const bcrypt  = require('bcrypt');
+const Order = require('../models/Orders');
+
 var jwt = require('jsonwebtoken');
 const jwtSecret = "HaHa"
 
@@ -13,22 +15,29 @@ router.post("/createuser", [
 ], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(400).json({success: false,  message: errors.array() });
     }
+
+    const userFound = await User.findOne({email: req.body.email});
+    if(userFound){
+        return res.status(400).json({success: false,  message: "A user with this email already exists"})
+    }
+    const salt = await bcrypt.genSalt(10)
+    let securePass = await bcrypt.hash(req.body.password, salt);
 
     try {
         await User.create({
             name: req.body.name,
-            password: req.body.password, 
+            password: securePass,   
             email: req.body.email,
             address: req.body.address,
         });
         res.json({ success: true });
     } catch (error) {
         console.log(error);
-        res.json({ success: false });
+        res.json({ success: false, message: error });
     }
-});
+})
 
 
 router.post('/loginUser', [
@@ -75,5 +84,51 @@ router.post('/foodData', async (req, res)=>{
         res.send("Server error!");
     }
 })
+
+router.post('/orderData', async (req, res) => {
+    let data = req.body.order_data;
+    await data.splice(0, 0, { Order_date: req.body.order_date });
+    
+    // Ensure email is present in the request body
+    if (!req.body.email) {
+        return res.status(400).send({ success: false, message: "Email is required" });
+    }
+
+    try {
+        const Order = require('../models/Order');
+        
+        let eId = await Order.findOne({ email: req.body.email });
+        if (eId === null) {
+            await Order.create({
+                email: req.body.email,
+                order_data: [data]
+            });
+            res.json({ success: true });
+        } else {
+            await Order.findOneAndUpdate(
+                { email: req.body.email },
+                { $push: { order_data: data } }
+            );
+            res.json({ success: true });
+        }
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send({ success: false, message: error.message });
+    }
+})
+
+
+router.post('/myOrderData', async (req, res) => {
+    try {
+        console.log(req.body.email)
+        let eId = await Order.findOne({ 'email': req.body.email })
+        //console.log(eId)
+        res.json({orderData:eId})
+    } catch (error) {
+        res.send("Error",error.message)
+    }
+    
+
+});
 
 module.exports = router;

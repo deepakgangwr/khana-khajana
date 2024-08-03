@@ -1,5 +1,78 @@
 .modal-backdrop.show {
   opacity: 0.70 !important; /* Increase the opacity value to make the backdrop darker */
 }
+/* General Modal Styles */
 
-  
+/* Navbar Buttons */
+.navbar .btn.bg-white.text-success {
+  border-radius: 25px; /* Rounded corners for a softer look */
+  border: 2px solid #28a745; /* Green border */
+  font-weight: bold; /* Make text bold */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.navbar .btn.bg-white.text-success:hover {
+  background-color: #28a745; /* Green background on hover */
+  color: white; /* White text on hover */
+  border: 2px solid transparent; /* Remove border on hover */
+}
+
+/* Modal Styles */
+.modal-content {
+  border-radius: 10px; /* Rounded corners for the modal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+  overflow: hidden; /* Prevent content overflow */
+}
+
+.modal-header {
+  background-color: #28a745; /* Green background for header */
+  color: white; /* White text */
+}
+
+.modal-header .btn-close {
+  filter: invert(1); /* Invert close button color */
+}
+
+/* Modal Input Styles */
+.modal-body input.form-control {
+  border-radius: 5px; /* Rounded corners for inputs */
+  border: 1px solid #ced4da; /* Light border */
+}
+
+.modal-body input.form-control:focus {
+  border-color: #28a745; /* Green border on focus */
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); /* Green shadow on focus */
+}
+
+/* Modal Button Styles */
+.modal-body .btn-outline-success {
+  border-color: #28a745; /* Green border */
+  color: #28a745; /* Green text */
+}
+
+.modal-body .btn-outline-success:hover {
+  background-color: #28a745; /* Green background on hover */
+  color: white; /* White text on hover */
+  border-color: transparent; /* Remove border on hover */
+}
+/* Navbar Buttons with Icons */
+.navbar .btn.bg-white.text-success {
+  border-radius: 25px; /* Rounded corners for a softer look */
+  border: 2px solid #28a745; /* Green border */
+  font-weight: bold; /* Make text bold */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  display: flex; /* Flexbox for icon and text alignment */
+  align-items: center; /* Center icon and text vertically */
+  padding: 0.5rem 1rem; /* Adjust padding */
+}
+
+.navbar .btn.bg-white.text-success .icon {
+  margin-right: 0.5rem; /* Space between icon and text */
+}
+
+.navbar .btn.bg-white.text-success:hover {
+  background-color: #28a745; /* Green background on hover */
+  color: white; /* White text on hover */
+  border: 2px solid transparent; /* Remove border on hover */
+}
+
