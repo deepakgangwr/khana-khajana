@@ -51,14 +51,23 @@
 }
 
 .modal-body .btn-outline-success:hover {
-  background-color: #28a745; /* Green background on hover */
+  background-color: #27af47; /* Green background on hover */
   color: white; /* White text on hover */
   border-color: transparent; /* Remove border on hover */
 }
 /* Navbar Buttons with Icons */
 .navbar .btn.bg-white.text-success {
   border-radius: 25px; /* Rounded corners for a softer look */
-  border: 2px solid #28a745; /* Green border */
+  border: 2px solid #279f43; /* Green border */
+  font-weight: bold; /* Make text bold */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  display: flex; /* Flexbox for icon and text alignment */
+  align-items: center; /* Center icon and text vertically */
+  padding: 0.5rem 1rem; /* Adjust padding */
+}
+.navbar .btn.bg-white.text-danger {
+  border-radius: 25px; /* Rounded corners for a softer look */
+  border: 2px solid #ef5007; /* Green border */
   font-weight: bold; /* Make text bold */
   transition: all 0.3s ease; /* Smooth transition for hover effects */
   display: flex; /* Flexbox for icon and text alignment */

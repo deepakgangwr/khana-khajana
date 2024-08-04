@@ -1,0 +1,40 @@
+.card {
+    border-radius: 15px;
+    background: linear-gradient(to right, #8aff5f, #feb47b); /* Gradient background */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  
+  .card img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  
+  .card-body {
+    background:#f6f0e6;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .select {
+    border-radius: 5px;
+    background:#28a745;
+    border: 1px solid #ccc;
+  }
+  
+  .btn-success {
+    background: #28a745;
+    border-color: #28a745;
+    font-weight: bold;
+  }
+  
+  .btn-success:hover {
+    background: #81a613;
+    border-color: #1e7e34;
+  }
+  

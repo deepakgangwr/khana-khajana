@@ -19,7 +19,7 @@ export default function MyOrder() {
       });
 
       const result = await response.json();
-      setOrderData(result.order_data || []);
+      setOrderData(result.orderData.order_data || []);
     } catch (error) {
       console.error("Failed to fetch order data:", error);
     }

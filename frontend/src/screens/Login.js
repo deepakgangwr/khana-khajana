@@ -1,50 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import loginImg from '../images/Signup-img.png';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import LoginIcon from '@mui/icons-material/Login';
 
-const LoginModal = () => {
+export default function Login() {
+  const [signinCredentials, setSigninCredentials] = useState({ email: "", password: "" });
+  const [showSigninPassword, setShowSigninPassword] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSigninSubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:5000/api/loginUser", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: signinCredentials.email,
+        password: signinCredentials.password,
+      })
+    });
+    const json = await response.json();
+    console.log(json);
+    if (json.success) {
+      localStorage.setItem('token', json.authToken);
+      localStorage.setItem('userEmail', signinCredentials.email);
+      navigate("/");
+    } else {
+      alert("Enter Valid Credentials");
+    }
+  };
+
+  const onSigninChange = (e) => {
+    setSigninCredentials({ ...signinCredentials, [e.target.name]: e.target.value });
+  };
+
+  const toggleSigninPassword = () => {
+    setShowSigninPassword(!showSigninPassword);
+  };
+
   return (
-    <div className="modal modal-lg fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-      <div className="modal-dialog modal-dialog-centered">
-        <div className="container d-flex main-sign">
-          <div className="w-50 rounded-start image-sign">
-            <img className="" src="https://popmenucloud.com/cdn-cgi/image/width=1920,height=1920,format=auto,fit=scale-down/wmzltkrx/8c4cf3f5-c756-4f81-aa1f-e2a3f7700fb9.jpg" alt="login" />
-          </div>
-          <div className="modal-content">
-            <div className="modal-header">
-              <h1 className="modal-title fs-5 text-success text-centered" id="loginModalLabel">
-                <span className="fs-4 fw-bold">Instafood</span>
-              </h1>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+      <div className="card" style={{ width: '400px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}>
+        <img src={loginImg} className="card-img-top" alt="Login" />
+        <div className="card-body">
+          <h1 className="card-title text-center text-success">
+            <LoginIcon className='me-2' /> Login
+          </h1>
+          <form onSubmit={handleSigninSubmit}>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">Email address</label>
+              <input type="email" className="form-control" id="email" name="email" value={signinCredentials.email} onChange={onSigninChange} />
             </div>
-            <div className="modal-header">
-              <p className="modal-title fs-5 text-secondary" id="loginModalLabel">
-                Sign In
-              </p>
+            <div className="mb-3 input-group">
+              <label htmlFor="password" className="form-label">Password</label>
+              <input type={showSigninPassword ? 'text' : 'password'} className="form-control" id="password" name="password" value={signinCredentials.password} onChange={onSigninChange} />
+              <button type="button" className="btn btn-outline-secondary" onClick={toggleSigninPassword}>
+                {showSigninPassword ? <VisibilityOff /> : <Visibility />}
+              </button>
             </div>
-            <div className="modal-body p-4 mt-4">
-              <form>
-                <div className="mb-3">
-                  <label htmlFor="name" className="form-label">Name</label>
-                  <input type="text" className="form-control" />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                  <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                  <div id="emailHelp" className="form-text"></div>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                  <input type="password" className="form-control" id="exampleInputPassword1" />
-                </div>
-                <button type="submit" className="btn rounded-pill btn-bs-gray-600 w-100 mt-3 py-2 btn-outline-success">
-                  Continue
-                </button>
-              </form>
-            </div>
-          </div>
+            <button type="submit" className="btn btn-success w-100 mt-3">Submit</button>
+          </form>
         </div>
       </div>
     </div>
   );
-};
-
-export default LoginModal;
+}

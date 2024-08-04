@@ -94,9 +94,7 @@ router.post('/orderData', async (req, res) => {
         return res.status(400).send({ success: false, message: "Email is required" });
     }
 
-    try {
-        const Order = require('../models/Order');
-        
+    try {   
         let eId = await Order.findOne({ email: req.body.email });
         if (eId === null) {
             await Order.create({
@@ -120,15 +118,12 @@ router.post('/orderData', async (req, res) => {
 
 router.post('/myOrderData', async (req, res) => {
     try {
-        console.log(req.body.email)
         let eId = await Order.findOne({ 'email': req.body.email })
         //console.log(eId)
         res.json({orderData:eId})
     } catch (error) {
         res.send("Error",error.message)
     }
-    
-
 });
 
 module.exports = router;

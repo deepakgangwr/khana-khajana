@@ -2,6 +2,9 @@
 import './App.css';
 import Home from './screens/Home';
 import Login from './screens/Login.js';
+
+
+
 import MyOrder from './screens/MyOrder';
 // import Navbar from './components/Navbar';
 import{
@@ -21,6 +24,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home/>} />
         {/* <Route exact path="/login" element={<Login/>} /> */}
+        {/* <Route path="/about" element={<About />} /> */}
         <Route exact path="/myorder" element={<MyOrder />} />
       </Routes>
     </Router>

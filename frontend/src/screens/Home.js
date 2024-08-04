@@ -60,13 +60,13 @@ export default function Home() {
       </button>
     </div>
     </div>
-      <div className='container'> {/* bootstrap is mobile first */}
+      <div className='container  py-5'  style={{backgroundColor: "" }}> {/* bootstrap is mobile first */}
         {
           foodCat.length > 0
             ? foodCat.map((data) => {
               return (
                 <div key={data.id} className='row mb-3'>
-                  <div className='fs-3 m-3'>
+                  <div className='fs-3 m-3 '>
                     {data.CategoryName}
                   </div>
                   <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))" }} />
