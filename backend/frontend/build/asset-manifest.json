@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.29e34ce7.css",
+    "main.js": "/static/js/main.fa205bdc.js",
+    "static/js/453.d32a4f4d.chunk.js": "/static/js/453.d32a4f4d.chunk.js",
+    "static/media/brand.png": "/static/media/brand.580e9f3d28984b2f52f8.png",
+    "static/media/scooter.png": "/static/media/scooter.8947a3b98b60d23545d0.png",
+    "static/media/signup1.jpg": "/static/media/signup1.7224373f36e7df981f29.jpg",
+    "static/media/Signup-img.png": "/static/media/Signup-img.093ad7ed0450f9be226e.png",
+    "index.html": "/index.html",
+    "main.29e34ce7.css.map": "/static/css/main.29e34ce7.css.map",
+    "main.fa205bdc.js.map": "/static/js/main.fa205bdc.js.map",
+    "453.d32a4f4d.chunk.js.map": "/static/js/453.d32a4f4d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.29e34ce7.css",
+    "static/js/main.fa205bdc.js"
+  ]
+}

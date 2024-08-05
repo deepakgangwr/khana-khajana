@@ -62,7 +62,7 @@ export default function Navbar() {
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/createuser", {
+    const response = await fetch( `${window.location.origin}/api/createuser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -88,7 +88,7 @@ export default function Navbar() {
 
   const handleSigninSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/loginUser", {
+    const response = await fetch(`${window.location.origin}/api/loginUser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

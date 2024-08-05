@@ -12,7 +12,7 @@ export default function Login() {
 
   const handleSigninSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/loginUser", {
+    const response = await fetch(`${window.location.origin}/api/loginUser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
