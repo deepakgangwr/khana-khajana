@@ -21,6 +21,10 @@ app.use((req, res, next) => {
 // Middleware to parse JSON requests
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.send("hello");
+});
+
 // Assuming 'createUser' is a router module
 app.use('/api', require('./Routes/CreateUser'));
 

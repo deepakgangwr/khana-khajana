@@ -10,7 +10,7 @@ export default function MyOrder() {
     if (!email) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/myOrderData`, {
+      const response = await fetch(`https://khana-khajana.onrender.com/api/myOrderData`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
