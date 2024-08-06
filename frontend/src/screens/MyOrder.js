@@ -10,7 +10,7 @@ export default function MyOrder() {
     if (!email) return;
 
     try {
-      const response = await fetch(`${window.location.origin}/api/myOrderData`, {
+      const response = await fetch(`http://localhost:5000/api/myOrderData`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

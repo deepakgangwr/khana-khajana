@@ -24,13 +24,7 @@ app.use(express.json());
 // Assuming 'createUser' is a router module
 app.use('/api', require('./Routes/CreateUser'));
 
-// Serve static files from the React frontend app
-app.use(express.static(path.resolve(__dirname, "frontend", "build")));
-
-// Catch all other routes and return the index file
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-});
+// node
 
 app.listen(PORT, () => {
     console.log(`Server started at port ${PORT}`);

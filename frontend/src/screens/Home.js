@@ -9,7 +9,7 @@ export default function Home() {
   const [search, setSearch] = useState(''); // Assuming you have a search state
 
   const loadFoodItems = async () => {
-    let response = await fetch(`${window.location.origin}/api/foodData`, {
+    let response = await fetch(`http://localhost:5000/api/foodData`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -26,26 +26,26 @@ const quickLinks01 = [
     display: "Home"
   },
   {
-    path: "/about",
+    // path: "/about",
     display: "About Us"
   },
   {
-    path: "/services",
+    // path: "/services",
     display: "Services"
   },
   {
-    path: "/help",
+    // path: "/help",
     display: "Help"
   }
 ];
 
 const quickLinks02 = [
   {
-    path: "/serviceProviders",
+    // path: "/serviceProviders",
     display: "Find a Service Provider"
   },
   {
-    path: "/services",
+    // path: "/services",
     display: "Browse Provided Services"
   },
   {
@@ -64,7 +64,7 @@ const quickLinks03 = [
     display: "Donate"
   },
   {
-    path: "/contact",
+    // path: "/contact",
     display: "Contact Us"
   }
 ];
